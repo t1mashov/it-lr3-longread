@@ -1,0 +1,1497 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Основные направления развития современных Интернет-технологий: от облаков к Web 3.0 и «умному туризму»
+    </title>
+    <meta name="description"
+        content="Мультимедиа-лонгрид: цифровая экономика, индустрия 4.0, Web 3.0, децентрализованное хранение (IPFS) и кейсы для туризма." />
+    <style>
+        :root {
+            --bg: #0b0f14;
+            --panel: #0f1620;
+            --panel2: #101b27;
+            --text: #d9e2ef;
+            --muted: #93a4bb;
+            --brand: #7dd3fc;
+            --brand2: #a78bfa;
+            --ok: #34d399;
+            --warn: #fbbf24;
+            --bad: #fb7185;
+            --line: rgba(255, 255, 255, .08);
+            --shadow: 0 18px 60px rgba(0, 0, 0, .45);
+            --radius: 18px;
+            --max: 980px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+            background:
+                radial-gradient(1200px 600px at 15% -10%, rgba(125, 211, 252, .14), transparent 60%),
+                radial-gradient(900px 500px at 80% 0%, rgba(167, 139, 250, .14), transparent 60%),
+                radial-gradient(700px 600px at 60% 105%, rgba(52, 211, 153, .08), transparent 55%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+        }
+
+        a {
+            color: var(--brand);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .wrap {
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 28px 16px 80px
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(12px);
+            background: linear-gradient(to bottom, rgba(11, 15, 20, .85), rgba(11, 15, 20, .35));
+            border-bottom: 1px solid var(--line);
+        }
+
+        .topbar .inner {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            letter-spacing: .2px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--brand), var(--brand2));
+            box-shadow: 0 0 0 6px rgba(125, 211, 252, .08);
+            animation: pulse 2.8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1
+            }
+
+            50% {
+                transform: scale(1.25);
+                opacity: .7
+            }
+        }
+
+        .progress {
+            flex: 1;
+            height: 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .06);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, rgba(125, 211, 252, .9), rgba(167, 139, 250, .9));
+            border-radius: 999px;
+            transition: width .12s linear;
+        }
+
+        .chip {
+            font-size: 12px;
+            color: var(--muted);
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .03);
+        }
+
+        header.hero {
+            padding: 28px 0 18px;
+        }
+
+        .heroCard {
+            background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
+            border: 1px solid var(--line);
+            border-radius: calc(var(--radius) + 8px);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .heroCard::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            background:
+                radial-gradient(700px 250px at 20% 0%, rgba(125, 211, 252, .20), transparent 60%),
+                radial-gradient(520px 240px at 85% 20%, rgba(167, 139, 250, .18), transparent 60%);
+            pointer-events: none;
+            filter: blur(0px);
+        }
+
+        .heroInner {
+            position: relative;
+            padding: 28px 22px 22px;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: clamp(26px, 3.2vw, 44px);
+            line-height: 1.12;
+            letter-spacing: -.4px;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: var(--muted);
+            max-width: 80ch;
+        }
+
+        .meta {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .meta .pill {
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid var(--line);
+            color: var(--muted);
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        @media (min-width: 920px) {
+            .grid {
+                grid-template-columns: 340px 1fr;
+                align-items: start
+            }
+        }
+
+        .toc {
+            position: sticky;
+            top: 64px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 14px 14px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, .25);
+        }
+
+        .toc h2 {
+            font-size: 14px;
+            margin: 0 0 8px;
+            color: var(--muted);
+            letter-spacing: .2px;
+            text-transform: uppercase;
+        }
+
+        .toc a {
+            display: block;
+            padding: 9px 10px;
+            border-radius: 12px;
+            color: var(--text);
+            border: 1px solid transparent;
+            text-decoration: none;
+            transition: .18s ease;
+            font-size: 14px;
+        }
+
+        .toc a:hover {
+            background: rgba(255, 255, 255, .04);
+            border-color: rgba(255, 255, 255, .08);
+        }
+
+        .toc a.active {
+            background: rgba(125, 211, 252, .10);
+            border-color: rgba(125, 211, 252, .22);
+            color: #e9f7ff;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        section.card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 18px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, .20);
+        }
+
+        section.card h2 {
+            margin: 0 0 10px;
+            font-size: clamp(20px, 2.2vw, 28px);
+            letter-spacing: -.2px;
+        }
+
+        section.card h3 {
+            margin: 18px 0 8px;
+            font-size: 18px;
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--muted);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .02);
+            padding: 6px 10px;
+            border-radius: 999px;
+            margin-bottom: 10px;
+        }
+
+        .kicker b {
+            color: #e9f7ff
+        }
+
+        p {
+            margin: 15px 0
+        }
+
+        .figure {
+            margin: 14px 0 8px;
+            background: rgba(0, 0, 0, .18);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .figure img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: saturate(1.05) contrast(1.04);
+            transform: scale(1.01);
+        }
+
+        .callout {
+            border: 1px solid rgba(125, 211, 252, .22);
+            background: linear-gradient(180deg, rgba(125, 211, 252, .10), rgba(255, 255, 255, .02));
+            border-radius: 16px;
+            padding: 14px 14px;
+            margin: 12px 0;
+        }
+
+        .callout .title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .callout .badge {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--brand), var(--brand2));
+        }
+
+        .two {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        @media (min-width: 760px) {
+            /* .two{grid-template-columns:1fr 1fr} */
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 16px;
+            padding: 14px 14px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stat::after {
+            content: "";
+            position: absolute;
+            inset: auto -40px -40px auto;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at 30% 30%, rgba(167, 139, 250, .18), transparent 55%);
+            transform: rotate(25deg);
+        }
+
+        .stat .label {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .stat .value {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -.4px;
+            margin-top: 4px;
+        }
+
+        .stat .hint {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 6px
+        }
+
+        .video {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, .10);
+            background: #000;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .35);
+        }
+
+        .video iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: 0;
+            display: block
+        }
+
+        .svgWrap {
+            border: 1px solid rgba(255, 255, 255, .10);
+            border-radius: 16px;
+            background: rgba(0, 0, 0, .18);
+            padding: 12px;
+            overflow: hidden;
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .10);
+            background: rgba(255, 255, 255, .02);
+        }
+
+        .sw {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            display: inline-block
+        }
+
+        .refs li {
+            margin: 10px 0;
+            color: var(--text)
+        }
+
+        .refs a {
+            word-break: break-word
+        }
+
+        /* scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: .55s ease
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none
+        }
+
+        /* subtle separators */
+        hr.sep {
+            border: none;
+            height: 1px;
+            background: var(--line);
+            margin: 18px 0;
+        }
+
+        /* back-to-top */
+        .toTop {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            z-index: 60;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            background: rgba(15, 22, 32, .75);
+            backdrop-filter: blur(10px);
+            color: var(--text);
+            padding: 10px 12px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .35);
+            cursor: pointer;
+            display: none;
+        }
+
+        .toTop:hover {
+            background: rgba(15, 22, 32, .9)
+        }
+
+        /* Hover-анимация для сценариев (.stat) */
+        .stat {
+            transition:
+                transform .22s ease,
+                border-color .22s ease,
+                background .22s ease,
+                box-shadow .22s ease,
+                filter .22s ease;
+        }
+
+        /* дополнительный "свет" поверх карточки */
+        .stat::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: 16px;
+            background:
+                radial-gradient(420px 220px at 15% 0%,
+                    rgba(125, 211, 252, .18), transparent 60%),
+                radial-gradient(420px 260px at 90% 100%,
+                    rgba(167, 139, 250, .16), transparent 60%);
+            opacity: 0;
+            transform: scale(0.98);
+            transition: opacity .22s ease, transform .22s ease;
+            pointer-events: none;
+        }
+
+        .stat:hover {
+            transform: translateY(-3px);
+            border-color: rgba(125, 211, 252, .28);
+            background: linear-gradient(180deg, rgba(125, 211, 252, .10), rgba(255, 255, 255, .02));
+            box-shadow: 0 16px 50px rgba(0, 0, 0, .45);
+            filter: saturate(1.05);
+        }
+
+        .stat:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* чуть подсветим заголовок внутри */
+        .stat:hover .value {
+            color: #e9f7ff;
+            text-shadow: 0 0 22px rgba(125, 211, 252, .18);
+        }
+
+        /* сделаем "пятно" ::after более заметным и плавным */
+        .stat::after {
+            transition: opacity .22s ease, transform .35s ease;
+            opacity: .85;
+        }
+
+        .stat:hover::after {
+            opacity: 1;
+            transform: rotate(25deg) scale(1.08);
+        }
+
+        /* На тач-устройствах убираем ховер, чтобы не залипало */
+        @media (hover: none) {
+            .stat:hover {
+                transform: none;
+            }
+
+            .stat:hover::before {
+                opacity: 0;
+                transform: scale(.98);
+            }
+        }
+
+        /* ===== SVG: цветная анимация по каждому блоку ===== */
+
+.svgWrap svg .box{
+  cursor: pointer;
+  transition: transform .18s ease, filter .25s ease, stroke .25s ease;
+  transform-origin: 50% 50%;
+}
+
+/* Текст внутри блоков */
+.svgWrap svg .t{
+  transition: fill .22s ease, opacity .22s ease, filter .25s ease;
+}
+
+/* Общий hover-эффект */
+.svgWrap svg .box:hover{
+  transform: translateY(-2px);
+  filter:
+    drop-shadow(0 0 12px rgba(255,255,255,.06))
+    drop-shadow(0 14px 22px rgba(0,0,0,.45));
+}
+
+/* “Перелив” делаем через анимацию градиента на fill:
+   - меняем fill на url(#hoverX)
+   - слегка “дышим” opacity и stroke */
+@keyframes blockPulse {
+  0%   { opacity: .92; }
+  50%  { opacity: 1; }
+  100% { opacity: .92; }
+}
+
+/* Сеть */
+.svgWrap svg .box-net:hover{
+  fill: url(#hoverNet) !important;
+  stroke: rgba(125,211,252,.34) !important;
+  animation: blockPulse 1.8s ease-in-out infinite;
+}
+.svgWrap svg .box-net:hover ~ .t-net,
+.svgWrap svg .t-net:hover{
+  fill: rgba(233,247,255,.96) !important;
+  filter: drop-shadow(0 0 10px rgba(125,211,252,.18));
+}
+
+/* Облака */
+.svgWrap svg .box-cloud:hover{
+  fill: url(#hoverCloud) !important;
+  stroke: rgba(167,139,250,.34) !important;
+  animation: blockPulse 1.8s ease-in-out infinite;
+}
+.svgWrap svg .box-cloud:hover ~ .t-cloud,
+.svgWrap svg .t-cloud:hover{
+  fill: rgba(233,247,255,.96) !important;
+  filter: drop-shadow(0 0 10px rgba(167,139,250,.18));
+}
+
+/* Данные */
+.svgWrap svg .box-data:hover{
+  fill: url(#hoverData) !important;
+  stroke: rgba(52,211,153,.34) !important;
+  animation: blockPulse 1.8s ease-in-out infinite;
+}
+.svgWrap svg .box-data:hover ~ .t-data,
+.svgWrap svg .t-data:hover{
+  fill: rgba(233,247,255,.96) !important;
+  filter: drop-shadow(0 0 10px rgba(52,211,153,.16));
+}
+
+/* Доверие */
+.svgWrap svg .box-trust:hover{
+  fill: url(#hoverTrust) !important;
+  opacity: 1 !important;
+  stroke: rgba(125,211,252,.40) !important;
+  animation: blockPulse 1.8s ease-in-out infinite;
+}
+.svgWrap svg .box-trust:hover ~ .t-trust,
+.svgWrap svg .t-trust:hover{
+  fill: rgba(233,247,255,.98) !important;
+  filter: drop-shadow(0 0 12px rgba(251,191,36,.12));
+}
+
+/* На тач-устройствах отключаем hover */
+@media (hover: none){
+  .svgWrap svg .box{ cursor: default; }
+  .svgWrap svg .box:hover{ transform:none; filter:none; animation:none; }
+}
+
+.svgWrap svg text{
+  pointer-events: none;
+}
+    </style>
+</head>
+
+
+
+
+<body>
+    <div class="topbar">
+        <div class="inner">
+            <div class="logo">
+                <span class="dot"></span>
+            </div>
+            <div class="progress" aria-label="Прогресс чтения">
+                <div class="bar" id="bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <header class="hero reveal in" id="top">
+            <div class="heroCard">
+                <div class="heroInner">
+                    <h1>Основные направления развития современных Интернет-технологий</h1>
+                    <h3>Выполнил: Тимашов Петр (группа ИДМ-25-07)</h3>
+                    <p class="subtitle">
+                        Как облака, edge-вычисления, 5G/6G, Web 3.0 и децентрализованное хранение меняют цифровую
+                        экономику – и почему туризм может стать «полигоном» для массового внедрения.
+                    </p>
+                    <div class="meta">
+                        <span class="pill">Фокус: Web 3.0</span>
+                        <span class="pill">Индустрия 4.0</span>
+                        <span class="pill">IPFS / Filecoin</span>
+                        <span class="pill">Кейсы для туризма</span>
+                        <span class="pill">Тёмная тема + анимации</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid">
+            <aside class="toc reveal in" aria-label="Содержание">
+                <h2>Содержание</h2>
+                <nav id="toc">
+                    <a href="#intro">1. Состояние на текущий момент</a>
+                    <a href="#digital-economy">2. Цифровая экономика как «новая нормальность»</a>
+                    <a href="#industry40">3. Индустрия 4.0 и связка IoT–Cloud–Data</a>
+                    <a href="#web3">4. Web 3.0: принципы и технологический стек</a>
+                    <a href="#storage">5. Децентрализованное хранение: IPFS как базовая идея</a>
+                    <a href="#tourism">6. Туризм: практические сценарии Web 3.0</a>
+                    <a href="#conclusion">7. Выводы</a>
+                    <a href="#refs">8. Список литературы</a>
+                </nav>
+            </aside>
+
+            <main>
+
+
+                <!----------------- INTRO ----------------->
+                <section class="card reveal" id="intro">
+                    <div class="kicker"><b>Раздел 1</b> · Контекст и «температура» отрасли</div>
+                    <h2>Состояние на текущий момент</h2>
+
+                    <p>
+                        Интернет-технологии сегодня – это уже не «отрасль внутри отрасли», а инфраструктура, на которой
+                        держатся управление, финансы, логистика, образование, медиа и, конечно, повседневные привычки
+                        людей.
+                        Важно понимать базовую рамку: цифровое пространство расширяется быстро, но
+                        <em>неравномерно</em>.
+                        Растёт количество пользователей, увеличивается вклад ИКТ в экономику, развивается экосистема
+                        электронных услуг – но параллельно сохраняется цифровой разрыв между странами и регионами.
+                    </p>
+
+                    <div class="two">
+                        <div class="stat" data-counter="5350000000" data-suffix=" пользователей">
+                            <div class="label">Глобальная аудитория интернета (оценка порядка)</div>
+                            <div class="value"><span class="num">0</span></div>
+                            <div class="hint">Порядка 5,35 млрд пользователей (оценки на начало 2024).</div>
+                        </div>
+
+                        <div class="stat" data-counter="66.2" data-suffix="% населения">
+                            <div class="label">Проникновение</div>
+                            <div class="value"><span class="num">0</span></div>
+                            <div class="hint">Процент населения мира, использующих интернет.</div>
+                        </div>
+                    </div>
+
+                    <div class="figure">
+                        <img alt="Цифровые сети и города ночью"
+                            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80">
+                    </div>
+
+                    <div class="callout">
+                        <p style="margin:0">
+                            Тренды (облака, edge, 5G/6G, Web 3.0, zero trust) важны не сами по себе, а потому что
+                            перестраивают доверие,
+                            цепочки создания ценности и архитектуру цифровых сервисов.
+                        </p>
+                    </div>
+
+                    <hr class="sep" />
+
+                    <p>
+                        Социальный фон тоже меняется: мобильность и платформы стали доминирующей формой потребления
+                        информации,
+                        а дискуссия о влиянии соцсетей на благополучие – частью массовой повестки.
+                        В итоге «интернет-технологии» – это одновременно про инфраструктуру, про данные, про экономику и
+                        про поведение людей.
+                    </p>
+                </section>
+
+
+
+
+                <!----------------- DIGITAL ECONOMY ----------------->
+                <section class="card reveal" id="digital-economy">
+                    <div class="kicker"><b>Раздел 2</b> · Цифровая экономика</div>
+                    <h2>Цифровая экономика как «новая нормальность»</h2>
+
+                    <p>
+                        Цифровая экономика сегодня рассматривается как системная трансформация –
+                        это не косметическое внедрение информационных технологий, а глубокая
+                        перестройка отношений и процессов за счёт данных, сетевых эффектов
+                        и платформенных моделей.
+                    </p>
+
+                    <h3>Что именно «оцифровывается»</h3>
+                    <p>
+                        На практике цифровизация затрагивает несколько ключевых слоёв общественной и экономической
+                        жизни:
+                    </p>
+                    <ul>
+                        <li>
+                            <b>Госуправление</b> – переход сервисов в электронный формат,
+                            рост зрелости e-government и снижение транзакционных издержек
+                            взаимодействия государства и граждан.
+                        </li>
+                        <li>
+                            <b>Критическая инфраструктура</b> – логистика, энергетика, транспорт,
+                            здравоохранение: использование сенсоров, мониторинга, цифровых платформ
+                            и аналитики для повышения устойчивости и эффективности.
+                        </li>
+                        <li>
+                            <b>Бизнес</b> – сдвиг от линейных моделей к экосистемам,
+                            где данные и цифровые сервисы становятся частью продукта,
+                            а конкуренция всё чаще идёт по принципу «платформа против платформы».
+                        </li>
+                    </ul>
+
+                    <div class="figure">
+                        <img alt="Абстрактная визуализация данных"
+                            src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1600&q=80">
+                    </div>
+
+                    <h3>Роль ИТ: каркас, на котором всё держится</h3>
+                    <p>
+                        Если упростить, информационные технологии выступают своеобразным
+                        «архитектурным каркасом» цифровой экономики: сеть связывает участников,
+                        облачные платформы обеспечивают масштабирование,
+                        edge-вычисления переносят обработку ближе к устройствам,
+                        а искусственный интеллект превращает массивы данных в управленческие решения.
+                    </p>
+
+                    <div class="svgWrap" aria-label="Инфографика: из чего складывается цифровая экономика">
+                        <svg viewBox="0 0 980 320" width="100%" height="auto" role="img">
+                            <defs>
+                                <!-- базовые градиенты (как у тебя) -->
+                                <linearGradient id="g1" x1="0" x2="1">
+                                    <stop offset="0" stop-color="rgba(125,211,252,.95)" />
+                                    <stop offset="1" stop-color="rgba(167,139,250,.95)" />
+                                </linearGradient>
+                                <linearGradient id="g2" x1="0" x2="1">
+                                    <stop offset="0" stop-color="rgba(52,211,153,.9)" />
+                                    <stop offset="1" stop-color="rgba(125,211,252,.85)" />
+                                </linearGradient>
+
+                                <!-- hover-градиенты для анимации цвета по блокам -->
+                                <linearGradient id="hoverNet" x1="0" y1="0" x2="1" y2="0">
+                                    <stop offset="0%" stop-color="rgba(125,211,252,.10)" />
+                                    <stop offset="50%" stop-color="rgba(125,211,252,.26)" />
+                                    <stop offset="100%" stop-color="rgba(167,139,250,.10)" />
+                                </linearGradient>
+
+                                <linearGradient id="hoverCloud" x1="0" y1="0" x2="1" y2="0">
+                                    <stop offset="0%" stop-color="rgba(167,139,250,.10)" />
+                                    <stop offset="50%" stop-color="rgba(167,139,250,.26)" />
+                                    <stop offset="100%" stop-color="rgba(125,211,252,.10)" />
+                                </linearGradient>
+
+                                <linearGradient id="hoverData" x1="0" y1="0" x2="1" y2="0">
+                                    <stop offset="0%" stop-color="rgba(52,211,153,.10)" />
+                                    <stop offset="50%" stop-color="rgba(52,211,153,.26)" />
+                                    <stop offset="100%" stop-color="rgba(125,211,252,.10)" />
+                                </linearGradient>
+
+                                <linearGradient id="hoverTrust" x1="0" y1="0" x2="1" y2="0">
+                                    <stop offset="0%" stop-color="rgba(125,211,252,.10)" />
+                                    <stop offset="50%" stop-color="rgba(125,211,252,.28)" />
+                                    <stop offset="100%" stop-color="rgba(251,191,36,.10)" />
+                                </linearGradient>
+                            </defs>
+
+                            <!-- baseline -->
+                            <rect x="16" y="28" rx="16" ry="16" width="948" height="264" fill="rgba(255,255,255,.03)"
+                                stroke="rgba(255,255,255,.10)" />
+                            <text x="34" y="62" fill="rgba(217,226,239,.92)" font-size="20" font-weight="700">
+                                Каркас цифровой экономики
+                            </text>
+                            <text x="34" y="88" fill="rgba(147,164,187,.92)" font-size="14">
+                                Сеть → облака/edge → данные/ИИ → сервисы/платформы → доверие/безопасность
+                            </text>
+
+                            <!-- blocks -->
+                            <g class="svganim">
+                                <!-- Сеть -->
+                                <rect class="box box-net" x="40" y="120" rx="14" ry="14" width="180" height="120"
+                                    fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.10)" />
+                                <text class="t t-net" x="58" y="154" fill="rgba(217,226,239,.92)" font-size="16"
+                                    font-weight="700">Сеть</text>
+                                <text class="t t-net" x="58" y="178" fill="rgba(147,164,187,.92)" font-size="13">ШПД,
+                                    5G/6G</text>
+                                <text class="t t-net" x="58" y="200" fill="rgba(147,164,187,.92)"
+                                    font-size="13">интероперабельность</text>
+
+                                <!-- Облака + Edge -->
+                                <rect class="box box-cloud" x="250" y="120" rx="14" ry="14" width="210" height="120"
+                                    fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.10)" />
+                                <text class="t t-cloud" x="268" y="154" fill="rgba(217,226,239,.92)" font-size="16"
+                                    font-weight="700">Облака + Edge</text>
+                                <text class="t t-cloud" x="268" y="178" fill="rgba(147,164,187,.92)"
+                                    font-size="13">масштабирование</text>
+                                <text class="t t-cloud" x="268" y="200" fill="rgba(147,164,187,.92)"
+                                    font-size="13">низкие задержки</text>
+
+                                <!-- Данные + ИИ -->
+                                <rect class="box box-data" x="490" y="120" rx="14" ry="14" width="210" height="120"
+                                    fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.10)" />
+                                <text class="t t-data" x="508" y="154" fill="rgba(217,226,239,.92)" font-size="16"
+                                    font-weight="700">Данные + ИИ</text>
+                                <text class="t t-data" x="508" y="178" fill="rgba(147,164,187,.92)"
+                                    font-size="13">аналитика</text>
+                                <text class="t t-data" x="508" y="200" fill="rgba(147,164,187,.92)"
+                                    font-size="13">автоматизация решений</text>
+
+                                <!-- Доверие -->
+                                <rect class="box box-trust" x="730" y="120" rx="14" ry="14" width="210" height="120"
+                                    fill="url(#g1)" opacity=".18" stroke="rgba(125,211,252,.28)" />
+                                <text class="t t-trust" x="748" y="154" fill="rgba(233,247,255,.96)" font-size="16"
+                                    font-weight="800">Доверие</text>
+                                <text class="t t-trust" x="748" y="178" fill="rgba(147,164,187,.98)"
+                                    font-size="13">кибербезопасность</text>
+                                <text class="t t-trust" x="748" y="200" fill="rgba(147,164,187,.98)"
+                                    font-size="13">управление доступом</text>
+
+                                <!-- arrows -->
+                                <path d="M220 180 L250 180" stroke="url(#g2)" stroke-width="4" stroke-linecap="round" />
+                                <path d="M460 180 L490 180" stroke="url(#g2)" stroke-width="4" stroke-linecap="round" />
+                                <path d="M700 180 L730 180" stroke="url(#g2)" stroke-width="4" stroke-linecap="round" />
+                            </g>
+                        </svg>
+                    </div>
+
+
+                    <p>
+                        При этом важным побочным эффектом цифровизации становится рост поверхности атак:
+                        чем больше критических процессов переносится в сеть,
+                        тем выше цена отказа и тем строже требования к кибербезопасности,
+                        защите данных и устойчивости цифровых систем.
+                    </p>
+                </section>
+
+
+
+
+                <!----------------- INDUSTRY 4.0 ----------------->
+                <section class="card reveal" id="industry40">
+                    <div class="kicker"><b>Раздел 3</b> · Индустрия 4.0</div>
+                    <h2>Индустрия 4.0 и связка IoT–Cloud–Data</h2>
+
+                    <p>
+                        Индустрия 4.0 – это переход от «просто автоматизации» к взаимосвязанным, адаптивным и частично
+                        саморегулируемым системам: умным фабрикам,
+                        цифровым двойникам и роботизированным линиям, которые опираются на данные в реальном времени.
+                    </p>
+
+                    <div class="two">
+                        <div class="callout">
+                            <div class="title"><span class="badge"></span>IoT + CPS: «чувства» и «нервы» производства
+                            </div>
+                            <p style="margin:0">
+                                Сенсоры и подключённые устройства дают поток телеметрии, на котором строится мониторинг,
+                                предиктивное обслуживание и оптимизация операций.
+                            </p>
+                        </div>
+                        <div class="callout"
+                            style="border-color:rgba(167,139,250,.22); background:linear-gradient(180deg, rgba(167,139,250,.10), rgba(255,255,255,.02));">
+                            <div class="title"><span class="badge"
+                                    style="background:linear-gradient(135deg,var(--brand2),var(--brand));"></span>Big
+                                Data/Cloud: «память» и «мозг»</div>
+                            <p style="margin:0">
+                                Облака и аналитика позволяют хранить и обрабатывать поток данных, превращая его в
+                                управленческие решения и экономию ресурсов.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="figure">
+                        <img alt="Промышленный робот и линии производства"
+                            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80">
+
+                    </div>
+
+                    <h3>Цифровые двойники и AR/VR: «увидеть систему целиком»</h3>
+                    <p>
+                        Цифровой двойник (Digital Twin) – виртуальная реплика объекта или процесса, которая постоянно
+                        актуализируется данными.
+                        В связке с AR/VR это даёт обучающие сценарии, поддержку операторов и более безопасное управление
+                        сложным оборудованием.
+                    </p>
+
+                    <p>
+                        Но здесь уже видна логика, ведущая к Web 3.0: растущая связанность требует новых моделей
+                        доверия, собственности на данные и интероперабельности между разными участниками.
+                    </p>
+                </section>
+
+
+
+                <!-- WEB 3.0 -->
+                <section class="card reveal" id="web3">
+                    <div class="kicker"><b>Раздел 4</b> · Web 3.0</div>
+                    <h2>Web 3.0: принципы и технологический стек</h2>
+
+                    <p>
+                        Понятие Web 3.0 используется для описания следующего этапа развития интернета,
+                        в котором меняется сама логика работы с данными и цифровыми сервисами.
+                        Если Web 2.0 сделал интернет интерактивным и социальным,
+                        то Web 3.0 стремится вернуть пользователю контроль над тем,
+                        что он создаёт и чем пользуется.
+                    </p>
+
+                    <p>
+                        Часто эту эволюцию описывают формулой
+                        <em>read–write–own</em>:
+                        пользователь не только читает и публикует контент,
+                        но и получает возможность владеть своими данными,
+                        цифровыми активами и результатами онлайн-деятельности.
+                    </p>
+
+                    <h3>Ключевые технологические опоры Web 3.0</h3>
+                    <ol>
+                        <li>
+                            <b>Блокчейн и смарт-контракты</b> –
+                            основа децентрализованного доверия.
+                            Правила взаимодействия между участниками задаются программно
+                            и исполняются автоматически, без необходимости в центральном посреднике.
+                        </li>
+                        <li>
+                            <b>Самосуверенная идентичность (SSI)</b> –
+                            подход, при котором пользователь сам управляет своими цифровыми данными
+                            и решает, какие сведения и кому он готов раскрывать.
+                        </li>
+                        <li>
+                            <b>Семантические технологии и ИИ</b> –
+                            средства, позволяющие работать не только с объёмами данных,
+                            но и с их смыслом: от интеллектуального поиска
+                            до персонализированных рекомендаций и цифровых ассистентов.
+                        </li>
+                        <li>
+                            <b>IoT, сети 5G/6G и edge-вычисления</b> –
+                            инфраструктура, обеспечивающая быстрый обмен данными
+                            и обработку информации максимально близко к её источнику,
+                            что особенно важно для «умных» устройств и сервисов реального времени.
+                        </li>
+                        <li>
+                            <b>Иммерсивные технологии (VR/AR, 3D-веб)</b> –
+                            новые формы взаимодействия с цифровым пространством,
+                            в которых интерфейс становится частью среды,
+                            а пользователь – её активным участником.
+                        </li>
+                    </ol>
+
+                    <div class="video" aria-label="Видео: объяснение Web 3.0">
+                        <iframe src="https://www.youtube.com/embed/WxBjCzB3kk8" title="Web 3.0: базовые идеи"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <p>
+                        При этом Web 3.0 не отменяет существующие облачные и платформенные решения.
+                        Речь идёт скорее о смене акцентов:
+                        вопросы собственности, доверия и ответственности
+                        выносятся на уровень архитектуры самих цифровых систем.
+                        Именно поэтому такие элементы, как децентрализованное хранение данных,
+                        идентичность и смарт-контракты,
+                        рассматриваются как базовые компоненты новой интернет-инфраструктуры.
+                    </p>
+                </section>
+
+
+
+
+                <!----------------- STORAGE ----------------->
+                <section class="card reveal" id="storage">
+                    <div class="kicker"><b>Раздел 5</b> · Децентрализованное хранение</div>
+                    <h2>Децентрализованное хранение данных: идея IPFS</h2>
+
+                    <p>
+                        Большинство современных интернет-сервисов используют централизованные облачные хранилища.
+                        Такой подход удобен и эффективен, однако он имеет очевидные ограничения:
+                        сбой у провайдера, блокировка доступа или потеря доверия к владельцу инфраструктуры
+                        могут сделать данные недоступными.
+                        В условиях роста цифровых сервисов и зависимости от данных эта уязвимость становится
+                        критически важной.
+                    </p>
+
+                    <p>
+                        Одним из ответов на эти вызовы стала концепция децентрализованного хранения данных,
+                        в рамках которой информация распределяется между множеством узлов сети.
+                        Одной из наиболее известных реализаций такого подхода является IPFS
+                        (InterPlanetary File System).
+                    </p>
+
+                    <div class="callout">
+                        <div class="title"><span class="badge"></span>Главная идея IPFS</div>
+                        <p style="margin:0">
+                            В IPFS пользователь обращается не к месту хранения файла, а к его содержимому.
+                            Данные идентифицируются по криптографическому хэшу,
+                            что позволяет получать один и тот же файл из любой точки сети, где он доступен.
+                        </p>
+                    </div>
+
+                    <h3>Как работает адресация по содержимому</h3>
+                    <p>
+                        В традиционном интернете файл доступен по URL-адресу, который указывает на конкретный сервер.
+                        В IPFS используется иной подход: каждый файл разбивается на блоки,
+                        каждому блоку присваивается уникальный идентификатор (CID),
+                        зависящий от его содержимого.
+                        Если данные изменяются, изменяется и их идентификатор.
+                    </p>
+
+                    <p>
+                        Связи между блоками формируют структуру Merkle-DAG –
+                        направленного ациклического графа, в котором каждый узел
+                        содержит ссылки на дочерние элементы.
+                        Такая модель обеспечивает целостность данных, упрощает проверку изменений
+                        и позволяет эффективно переиспользовать одинаковые фрагменты информации.
+                    </p>
+
+                    <div class="figure">
+                        <img alt="Схема Merkle DAG и дедупликации в IPFS"
+                            src="https://blog.ipfs.tech/assets/img/dag-deduplication.ba3bdc7d.png" loading="lazy">
+                    </div>
+
+                    <h3>Почему это важно для будущего интернета</h3>
+                    <p>
+                        Децентрализованное хранение данных даёт сразу несколько практических преимуществ.
+                        Во-первых, исчезает единая точка отказа: потеря одного узла не приводит
+                        к потере информации.
+                        Во-вторых, упрощается версионирование –
+                        любые изменения автоматически фиксируются на уровне структуры данных.
+                    </p>
+
+                    <p>
+                        В-третьих, IPFS снижает дублирование информации:
+                        если одинаковые блоки используются в разных файлах,
+                        они могут храниться в сети только один раз.
+                        Это особенно важно для мультимедийного контента,
+                        больших архивов и распределённых приложений.
+                    </p>
+
+                    <p>
+                        Именно поэтому децентрализованные системы хранения рассматриваются
+                        как фундаментальный элемент Web 3.0 –
+                        интернета, в котором данные принадлежат пользователям,
+                        а инфраструктура становится более устойчивой,
+                        прозрачной и независимой от отдельных поставщиков услуг.
+                    </p>
+
+                    <div class="figure">
+                        <img alt="Серверные стойки и кабели"
+                            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80"
+                            loading="lazy">
+                        <div class="figcap">
+                            Децентрализация не отменяет дата-центры, но меняет принципы хранения,
+                            распределения и контроля данных.
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+                <!----------------- TOURISM ----------------->
+                <section class="card reveal" id="tourism">
+                    <div class="kicker"><b>Раздел 6</b> · Практика</div>
+                    <h2>Туризм: практические сценарии Web 3.0</h2>
+
+                    <p>
+                        Туризм часто рассматривается как показательный сектор цифровой трансформации.
+                        Эта отрасль отличается высокой динамикой и напрямую зависит от данных, доверия
+                        и взаимодействия множества участников — путешественников, отелей, транспортных компаний,
+                        агентств и государственных структур.
+                        На сегодняшний день туристический рынок в значительной степени опирается
+                        на централизованные агрегаторы и платформы, однако концепции Web 3.0
+                        открывают возможность для более прямых и прозрачных моделей взаимодействия.
+                    </p>
+
+                    <h3>Почему именно туризм — «боль» у всех одинакова</h3>
+                    <ul>
+                        <li>
+                            <b>Доверие</b>: отзывы и рейтинги нередко подвержены манипуляциям,
+                            а ответственность размывается между большим числом посредников.
+                        </li>
+                        <li>
+                            <b>Комиссии</b>: чем больше промежуточных платформ,
+                            тем выше транзакционные издержки и тем ниже фактическая маржа поставщиков услуг.
+                        </li>
+                        <li>
+                            <b>Данные</b>: пользователь оставляет цифровой след на десятках сервисов,
+                            но практически не контролирует способы и цели использования своей информации.
+                        </li>
+                        <li>
+                            <b>Фрагментация</b>: билеты, проживание, страховки и пропуска
+                            существуют в виде разрозненных систем, которые слабо интегрируются друг с другом.
+                        </li>
+                    </ul>
+
+                    <div class="callout">
+                        <div class="title"><span class="badge"></span>Идея Web 3.0 для туризма</div>
+                        <p style="margin:0">
+                            Формирование децентрализованной туристической экосистемы, в которой бронирование,
+                            оплата, возвраты и программы лояльности реализуются с помощью смарт-контрактов,
+                            а персональные данные путешественника управляются через самосуверенную идентичность (SSI)
+                            при минимальном количестве посредников.
+                        </p>
+                    </div>
+
+                    <div class="two">
+                        <div class="stat">
+                            <div class="label">Сценарий 1</div>
+                            <div class="value" style="font-size:20px">Децентрализованное бронирование</div>
+                            <div class="hint">
+                                Прямые контракты «гость ↔ отель» с прозрачными условиями отмены и возврата,
+                                снижением комиссий и ростом взаимного доверия.
+                            </div>
+                        </div>
+
+                        <div class="stat">
+                            <div class="label">Сценарий 2</div>
+                            <div class="value" style="font-size:20px">SSI-идентичность путешественника</div>
+                            <div class="hint">
+                                Быстрая и безопасная проверка данных в аэропортах и гостиницах
+                                без массового копирования документов —
+                                пользователь раскрывает только необходимые атрибуты.
+                            </div>
+                        </div>
+
+                        <div class="stat">
+                            <div class="label">Сценарий 3</div>
+                            <div class="value" style="font-size:20px">Токенизация лояльности</div>
+                            <div class="hint">
+                                Бонусы и баллы превращаются в переносимые цифровые активы,
+                                что упрощает партнёрские программы и повышает прозрачность систем вознаграждения.
+                            </div>
+                        </div>
+
+                        <div class="stat">
+                            <div class="label">Сценарий 4</div>
+                            <div class="value" style="font-size:20px">Хранение отзывов и маршрутов в сети</div>
+                            <div class="hint">
+                                Отзывы, фотографии и истории поездок могут храниться распределённо
+                                (например, с использованием IPFS),
+                                что снижает риск цензуры, подмены данных и потери контента.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="figure">
+                        <img alt="Путешествие: карта и смартфон"
+                            src="https://cdn.7days.ru/pic/fcf/1025849/1773277/86.jpg">
+                    </div>
+
+                    <h3>Где пригодятся ИИ и семантические технологии</h3>
+                    <p>
+                        Искусственный интеллект и семантические технологии играют ключевую роль
+                        в персонализации туристических сервисов.
+                        При наличии структурированных и защищённых данных становится возможным
+                        формирование индивидуальных маршрутов,
+                        учёт контекста поездки (время, бюджет, интересы),
+                        снижение информационного «шума» и повышение точности рекомендаций.
+                    </p>
+
+                    <p>
+                        В результате формируется модель «умного туризма»,
+                        в которой данные становятся стратегическим активом,
+                        а управление ими — более безопасным, прозрачным и распределённым.
+                    </p>
+                </section>
+
+
+
+
+
+                <!----------------- CONCLUSION ----------------->
+                <section class="card reveal" id="conclusion">
+                    <div class="kicker"><b>Раздел 7</b> · Итоги</div>
+                    <h2>Выводы</h2>
+
+                    <p>
+                        По материалам реферата можно сформулировать несколько «жёстких» выводов:
+                    </p>
+                    <ol>
+                        <li>
+                            <b>Интернет-технологии – это инфраструктура экономики</b>: рост цифровых сервисов, платформ
+                            и данных делает ИТ системообразующим фактором конкурентоспособности.
+                        </li>
+                        <li>
+                            <b>Индустрия 4.0</b> фиксирует главный технический механизм трансформации: IoT → поток
+                            данных → облака/edge → аналитика/ИИ → адаптивные процессы.
+                        </li>
+                        <li>
+                            <b>Web 3.0</b> добавляет слой доверия и собственности: «read–write–own», SSI,
+                            смарт-контракты и распределённые инфраструктуры.
+                        </li>
+                        <li>
+                            <b>Децентрализованное хранение</b> (IPFS и др.) – базовый инфраструктурный элемент Web 3.0,
+                            снимающий зависимость от централизованных точек хранения и повышающий устойчивость.
+                        </li>
+                        <li>
+                            <b>Туризм</b> – удобная прикладная область для «приземления» Web 3.0: бронирование, отзывы,
+                            программы лояльности, идентичность и персонализация могут быть перестроены на новые
+                            принципы.
+                        </li>
+                    </ol>
+
+                    <div class="callout"
+                        style="border-color:rgba(52,211,153,.22); background:linear-gradient(180deg, rgba(52,211,153,.10), rgba(255,255,255,.02));">
+                        <div class="title"><span class="badge"
+                                style="background:linear-gradient(135deg,var(--ok),var(--brand));"></span>Смысловая
+                            «формула»</div>
+                        <p style="margin:0">
+                            <b>Инфраструктура</b> (сеть/облака/edge) + <b>данные</b> (аналитика/ИИ) + <b>доверие</b>
+                            (Web 3.0, SSI, смарт-контракты, хранение) → новые сервисы и новые модели рынка.
+                        </p>
+                    </div>
+                </section>
+
+
+
+                <!----------------- REFERENCES ----------------->
+                <section class="card reveal" id="refs">
+                    <div class="kicker"><b>Раздел 8</b> · Источники</div>
+                    <h2>Список литературы</h2>
+
+                    <ol class="refs">
+                        <li>
+                            Мировой банк. Individuals using the Internet (% of population) – URL:
+                            <a href="https://data.worldbank.org/indicator/IT.NET.USER.ZS" target="_blank"
+                                rel="noopener">
+                                https://data.worldbank.org/indicator/IT.NET.USER.ZS
+                            </a>
+                        </li>
+
+                        <li>
+                            ООН. E-Government Survey 2024 – URL:
+                            <a href="https://publicadministration.un.org/egovkb/en-us/Reports/UN-E-Government-Survey-2024"
+                                target="_blank" rel="noopener">
+                                https://publicadministration.un.org/egovkb/en-us/Reports/UN-E-Government-Survey-2024
+                            </a>
+                        </li>
+
+                        <li>
+                            Pew Research Center. Americans’ Social Media Use in 2024 – URL:
+                            <a href="https://www.pewresearch.org/internet/2024/01/31/americans-social-media-use/"
+                                target="_blank" rel="noopener">
+                                https://www.pewresearch.org/internet/2024/01/31/americans-social-media-use/
+                            </a>
+                        </li>
+
+                        <li>
+                            Andriulo F. C., Fiore M., Mongiello M., Traversa E., Zizzo V.
+                            Edge Computing and Cloud Computing for Internet of Things: A Review – URL:
+                            <a href="https://www.mdpi.com/2227-9709/11/4/71" target="_blank" rel="noopener">
+                                https://www.mdpi.com/2227-9709/11/4/71
+                            </a>
+                        </li>
+
+                        <li>
+                            Elnadi M. и др. Industry 4.0: Critical Investigations and Synthesis of Key Findings – URL:
+                            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9805798/" target="_blank" rel="noopener">
+                                https://pmc.ncbi.nlm.nih.gov/articles/PMC9805798/
+                            </a>
+                        </li>
+
+                        <li>
+                            Hassan M. A. и др. Enabling Technologies for Web 3.0: A Comprehensive Survey – URL:
+                            <a href="https://arxiv.org/abs/2401.10901" target="_blank" rel="noopener">
+                                https://arxiv.org/abs/2401.10901
+                            </a>
+                        </li>
+
+                        <li>
+                            Bits.Media. Децентрализованный интернет: что нужно знать о хранении информации в Web3 – URL:
+                            <a href="https://bits.media/pr/detsentralizovannyy-internet-chto-nuzhno-znat-o-khranenii-informatsii-v-web3/"
+                                target="_blank" rel="noopener">
+                                https://bits.media/pr/detsentralizovannyy-internet-chto-nuzhno-znat-o-khranenii-informatsii-v-web3/
+                            </a>
+                        </li>
+
+                        <li>
+                            Benet J. IPFS – Content Addressed, Versioned, P2P File System – URL:
+                            <a href="https://arxiv.org/abs/1407.3561" target="_blank" rel="noopener">
+                                https://arxiv.org/abs/1407.3561
+                            </a>
+                        </li>
+
+                        <li>
+                            Цифровая трансформация туризма в условиях санкционных ограничений: фактор экономического
+                            роста – URL:
+                            <a href="https://cyberleninka.ru/article/n/tsifrovaya-transformatsiya-turizma-v-usloviyah-sanktsionnyh-ogranicheniy-faktor-ekonomicheskogo-rosta"
+                                target="_blank" rel="noopener">
+                                https://cyberleninka.ru/article/n/tsifrovaya-transformatsiya-turizma-v-usloviyah-sanktsionnyh-ogranicheniy-faktor-ekonomicheskogo-rosta
+                            </a>
+                        </li>
+
+                        <li>
+                            Вестник Алтайской академии экономики и права.
+                            Потенциал использования цифровых платформ в развитии внутреннего и въездного туризма – URL:
+                            <a href="https://vaael.ru/article/view?id=2778" target="_blank" rel="noopener">
+                                https://vaael.ru/article/view?id=2778
+                            </a>
+                        </li>
+
+                        <li>
+                            RB.ru. Как туризм может продвинуть Web3 в массы – URL:
+                            <a href="https://rb.ru/stories/web3-tourism-innovations/" target="_blank" rel="noopener">
+                                https://rb.ru/stories/web3-tourism-innovations/
+                            </a>
+                        </li>
+                    </ol>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+
+
+
+
+    <button class="toTop" id="toTop" aria-label="Наверх">↑ Наверх</button>
+
+    <script>
+        // ---- helpers
+        const $ = (s, p = document) => p.querySelector(s);
+        const $$ = (s, p = document) => Array.from(p.querySelectorAll(s));
+
+        // ---- progress bar + back to top
+        (function () {
+            const bar = $("#bar");
+            const btn = $("#toTop");
+            const onScroll = () => {
+                const doc = document.documentElement;
+                const h = doc.scrollHeight - doc.clientHeight;
+                const sc = (h > 0) ? (doc.scrollTop / h) : 0;
+                bar.style.width = (sc * 100).toFixed(1) + "%";
+                btn.style.display = doc.scrollTop > 700 ? "block" : "none";
+            };
+            window.addEventListener("scroll", onScroll, { passive: true });
+            onScroll();
+            btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+        })();
+
+        // ---- reveal on scroll
+        (function () {
+            const els = $$(".reveal");
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) e.target.classList.add("in");
+                });
+            }, { threshold: 0.12 });
+            els.forEach(el => io.observe(el));
+        })();
+
+        // ---- TOC active link highlighting
+        (function () {
+            const links = $$("#toc a");
+            const sections = links
+                .map(a => document.querySelector(a.getAttribute("href")))
+                .filter(Boolean);
+
+            const setActive = (id) => {
+                links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+            };
+
+            const io = new IntersectionObserver((entries) => {
+                const visible = entries.filter(e => e.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+                if (visible && visible.target && visible.target.id) setActive(visible.target.id);
+            }, { rootMargin: "-15% 0px -70% 0px", threshold: [0.08, 0.12, 0.18, 0.24] });
+
+            sections.forEach(s => io.observe(s));
+        })();
+
+        // ---- animated counters (when visible)
+        (function () {
+            const cards = $$("[data-counter]");
+            const animate = (el) => {
+                const target = Number(el.getAttribute("data-counter")) || 0;
+                const suffix = el.getAttribute("data-suffix") || "";
+                const out = el.querySelector(".num");
+                const isBig = target > 1000000;
+
+                const duration = 1100 + Math.min(1400, Math.log10(Math.max(10, target)) * 420);
+                const start = performance.now();
+
+                const fmt = (n) => {
+                    // если это проценты – показываем 1 знак после запятой (66,2)
+                    if (suffix.includes("%")) {
+                        return n.toLocaleString("ru-RU", { maximumFractionDigits: 1, minimumFractionDigits: 1 });
+                    }
+
+                    if (isBig) {
+                        // 5 350 000 000
+                        return n.toLocaleString("ru-RU");
+                    }
+
+                    return Math.round(n).toLocaleString("ru-RU");
+                };
+
+                const tick = (t) => {
+                    const p = Math.min(1, (t - start) / duration);
+                    // easeOutCubic
+                    const e = 1 - Math.pow(1 - p, 3);
+                    const v = target * e;
+                    out.textContent = fmt(v) + suffix;
+                    if (p < 1) requestAnimationFrame(tick);
+                };
+                requestAnimationFrame(tick);
+            };
+
+            const done = new WeakSet();
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting && !done.has(e.target)) {
+                        done.add(e.target);
+                        animate(e.target);
+                    }
+                });
+            }, { threshold: 0.35 });
+
+            cards.forEach(c => io.observe(c));
+        })();
+
+    </script>
+</body>
+
+</html>
