@@ -550,92 +550,110 @@
 
         /* ===== SVG: цветная анимация по каждому блоку ===== */
 
-.svgWrap svg .box{
-  cursor: pointer;
-  transition: transform .18s ease, filter .25s ease, stroke .25s ease;
-  transform-origin: 50% 50%;
-}
+        .svgWrap svg .box {
+            cursor: pointer;
+            transition: transform .18s ease, filter .25s ease, stroke .25s ease;
+            transform-origin: 50% 50%;
+        }
 
-/* Текст внутри блоков */
-.svgWrap svg .t{
-  transition: fill .22s ease, opacity .22s ease, filter .25s ease;
-}
+        /* Текст внутри блоков */
+        .svgWrap svg .t {
+            transition: fill .22s ease, opacity .22s ease, filter .25s ease;
+        }
 
-/* Общий hover-эффект */
-.svgWrap svg .box:hover{
-  transform: translateY(-2px);
-  filter:
-    drop-shadow(0 0 12px rgba(255,255,255,.06))
-    drop-shadow(0 14px 22px rgba(0,0,0,.45));
-}
+        /* Общий hover-эффект */
+        .svgWrap svg .box:hover {
+            transform: translateY(-2px);
+            filter:
+                drop-shadow(0 0 12px rgba(255, 255, 255, .06)) drop-shadow(0 14px 22px rgba(0, 0, 0, .45));
+        }
 
-/* “Перелив” делаем через анимацию градиента на fill:
+        /* “Перелив” делаем через анимацию градиента на fill:
    - меняем fill на url(#hoverX)
    - слегка “дышим” opacity и stroke */
-@keyframes blockPulse {
-  0%   { opacity: .92; }
-  50%  { opacity: 1; }
-  100% { opacity: .92; }
-}
+        @keyframes blockPulse {
+            0% {
+                opacity: .92;
+            }
 
-/* Сеть */
-.svgWrap svg .box-net:hover{
-  fill: url(#hoverNet) !important;
-  stroke: rgba(125,211,252,.34) !important;
-  animation: blockPulse 1.8s ease-in-out infinite;
-}
-.svgWrap svg .box-net:hover ~ .t-net,
-.svgWrap svg .t-net:hover{
-  fill: rgba(233,247,255,.96) !important;
-  filter: drop-shadow(0 0 10px rgba(125,211,252,.18));
-}
+            50% {
+                opacity: 1;
+            }
 
-/* Облака */
-.svgWrap svg .box-cloud:hover{
-  fill: url(#hoverCloud) !important;
-  stroke: rgba(167,139,250,.34) !important;
-  animation: blockPulse 1.8s ease-in-out infinite;
-}
-.svgWrap svg .box-cloud:hover ~ .t-cloud,
-.svgWrap svg .t-cloud:hover{
-  fill: rgba(233,247,255,.96) !important;
-  filter: drop-shadow(0 0 10px rgba(167,139,250,.18));
-}
+            100% {
+                opacity: .92;
+            }
+        }
 
-/* Данные */
-.svgWrap svg .box-data:hover{
-  fill: url(#hoverData) !important;
-  stroke: rgba(52,211,153,.34) !important;
-  animation: blockPulse 1.8s ease-in-out infinite;
-}
-.svgWrap svg .box-data:hover ~ .t-data,
-.svgWrap svg .t-data:hover{
-  fill: rgba(233,247,255,.96) !important;
-  filter: drop-shadow(0 0 10px rgba(52,211,153,.16));
-}
+        /* Сеть */
+        .svgWrap svg .box-net:hover {
+            fill: url(#hoverNet) !important;
+            stroke: rgba(125, 211, 252, .34) !important;
+            animation: blockPulse 1.8s ease-in-out infinite;
+        }
 
-/* Доверие */
-.svgWrap svg .box-trust:hover{
-  fill: url(#hoverTrust) !important;
-  opacity: 1 !important;
-  stroke: rgba(125,211,252,.40) !important;
-  animation: blockPulse 1.8s ease-in-out infinite;
-}
-.svgWrap svg .box-trust:hover ~ .t-trust,
-.svgWrap svg .t-trust:hover{
-  fill: rgba(233,247,255,.98) !important;
-  filter: drop-shadow(0 0 12px rgba(251,191,36,.12));
-}
+        .svgWrap svg .box-net:hover~.t-net,
+        .svgWrap svg .t-net:hover {
+            fill: rgba(233, 247, 255, .96) !important;
+            filter: drop-shadow(0 0 10px rgba(125, 211, 252, .18));
+        }
 
-/* На тач-устройствах отключаем hover */
-@media (hover: none){
-  .svgWrap svg .box{ cursor: default; }
-  .svgWrap svg .box:hover{ transform:none; filter:none; animation:none; }
-}
+        /* Облака */
+        .svgWrap svg .box-cloud:hover {
+            fill: url(#hoverCloud) !important;
+            stroke: rgba(167, 139, 250, .34) !important;
+            animation: blockPulse 1.8s ease-in-out infinite;
+        }
 
-.svgWrap svg text{
-  pointer-events: none;
-}
+        .svgWrap svg .box-cloud:hover~.t-cloud,
+        .svgWrap svg .t-cloud:hover {
+            fill: rgba(233, 247, 255, .96) !important;
+            filter: drop-shadow(0 0 10px rgba(167, 139, 250, .18));
+        }
+
+        /* Данные */
+        .svgWrap svg .box-data:hover {
+            fill: url(#hoverData) !important;
+            stroke: rgba(52, 211, 153, .34) !important;
+            animation: blockPulse 1.8s ease-in-out infinite;
+        }
+
+        .svgWrap svg .box-data:hover~.t-data,
+        .svgWrap svg .t-data:hover {
+            fill: rgba(233, 247, 255, .96) !important;
+            filter: drop-shadow(0 0 10px rgba(52, 211, 153, .16));
+        }
+
+        /* Доверие */
+        .svgWrap svg .box-trust:hover {
+            fill: url(#hoverTrust) !important;
+            opacity: 1 !important;
+            stroke: rgba(125, 211, 252, .40) !important;
+            animation: blockPulse 1.8s ease-in-out infinite;
+        }
+
+        .svgWrap svg .box-trust:hover~.t-trust,
+        .svgWrap svg .t-trust:hover {
+            fill: rgba(233, 247, 255, .98) !important;
+            filter: drop-shadow(0 0 12px rgba(251, 191, 36, .12));
+        }
+
+        /* На тач-устройствах отключаем hover */
+        @media (hover: none) {
+            .svgWrap svg .box {
+                cursor: default;
+            }
+
+            .svgWrap svg .box:hover {
+                transform: none;
+                filter: none;
+                animation: none;
+            }
+        }
+
+        .svgWrap svg text {
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -1245,43 +1263,50 @@
                     <h2>Выводы</h2>
 
                     <p>
-                        По материалам реферата можно сформулировать несколько «жёстких» выводов:
+                        Рассмотренные примеры показывают, что интернет-технологии перестали быть
+                        вспомогательным инструментом и превратились в основу цифровой экономики.
+                        Развитие сетей, облачных и периферийных вычислений, а также аналитики данных
+                        формирует единый технологический контур современных сервисов.
                     </p>
+
                     <ol>
                         <li>
-                            <b>Интернет-технологии – это инфраструктура экономики</b>: рост цифровых сервисов, платформ
-                            и данных делает ИТ системообразующим фактором конкурентоспособности.
+                            <b>Интернет-технологии</b> выполняют инфраструктурную роль,
+                            определяя устойчивость и конкурентоспособность цифровых экосистем.
                         </li>
                         <li>
-                            <b>Индустрия 4.0</b> фиксирует главный технический механизм трансформации: IoT → поток
-                            данных → облака/edge → аналитика/ИИ → адаптивные процессы.
+                            <b>Индустрия 4.0</b> описывает связку физических процессов и цифровых решений,
+                            где данные и ИИ обеспечивают адаптивность и эффективность.
                         </li>
                         <li>
-                            <b>Web 3.0</b> добавляет слой доверия и собственности: «read–write–own», SSI,
-                            смарт-контракты и распределённые инфраструктуры.
+                            <b>Web 3.0</b> добавляет уровень доверия и цифровой собственности,
+                            изменяя принципы взаимодействия пользователей и сервисов.
                         </li>
                         <li>
-                            <b>Децентрализованное хранение</b> (IPFS и др.) – базовый инфраструктурный элемент Web 3.0,
-                            снимающий зависимость от централизованных точек хранения и повышающий устойчивость.
+                            <b>Децентрализованное хранение</b> повышает устойчивость данных
+                            и снижает зависимость от централизованных платформ.
                         </li>
                         <li>
-                            <b>Туризм</b> – удобная прикладная область для «приземления» Web 3.0: бронирование, отзывы,
-                            программы лояльности, идентичность и персонализация могут быть перестроены на новые
-                            принципы.
+                            <b>Туризм</b> демонстрирует практическую применимость этих подходов
+                            на уровне реальных пользовательских сценариев.
                         </li>
                     </ol>
 
-                    <div class="callout"
-                        style="border-color:rgba(52,211,153,.22); background:linear-gradient(180deg, rgba(52,211,153,.10), rgba(255,255,255,.02));">
-                        <div class="title"><span class="badge"
-                                style="background:linear-gradient(135deg,var(--ok),var(--brand));"></span>Смысловая
-                            «формула»</div>
+                    <div class="callout" style="border-color:rgba(52,211,153,.22);
+              background:linear-gradient(180deg, rgba(52,211,153,.10), rgba(255,255,255,.02));">
+                        <div class="title">
+                            <span class="badge"
+                                style="background:linear-gradient(135deg,var(--ok),var(--brand));"></span>
+                            Итоговая модель
+                        </div>
                         <p style="margin:0">
-                            <b>Инфраструктура</b> (сеть/облака/edge) + <b>данные</b> (аналитика/ИИ) + <b>доверие</b>
-                            (Web 3.0, SSI, смарт-контракты, хранение) → новые сервисы и новые модели рынка.
+                            Инфраструктура, данные и механизмы доверия в совокупности
+                            формируют новые цифровые сервисы и модели взаимодействия.
                         </p>
                     </div>
                 </section>
+
+
 
 
 
