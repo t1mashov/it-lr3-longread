@@ -655,6 +655,12 @@
             pointer-events: none;
         }
     </style>
+
+    <style>
+  .cta--single, .cta--triple { display:none; }
+  .cta-single .cta--single { display:block; }
+  .cta-triple .cta--triple { display:block; }
+</style>
 </head>
 
 
@@ -1552,6 +1558,8 @@
             // flags — объект/набор флагов для текущего пользователя
             // Дальше — ваша логика
             var layout = flags && (flags.cta_layout || flags['cta_layout']);
+
+            console.log('layout', layout);
 
             if (layout === 'triple') {
                 console.log("trip")
