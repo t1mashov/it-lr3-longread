@@ -1539,6 +1539,21 @@
             (window, document, 'script', 'https://abt.s3.yandex.net/expjs/latest/exp.js', 'ymab');
         ymab('metrika.106613205', 'init'/*, {clientFeatures}, {callback}*/);
     </script>
+
+    <script>
+        // Получаем флаги эксперимента
+        ymab('metrika.106613205', 'getFlags', function (flags) {
+            // flags — объект/набор флагов для текущего пользователя
+            // Дальше — ваша логика
+            var layout = flags && (flags.cta_layout || flags['cta_layout']);
+
+            if (layout === 'triple') {
+                console.log("trip")
+            } else {
+                console.log("vkid")
+            }
+        });
+    </script>
 </body>
 
 </html>
