@@ -1557,6 +1557,8 @@
         ymab('metrika.106613205', 'getFlags', function (flags) {
             // flags — объект/набор флагов для текущего пользователя
             // Дальше — ваша логика
+            console.log('flags=', flags);
+
             var layout = flags && (flags.cta_layout || flags['cta_layout']);
 
             console.log('layout', layout);
