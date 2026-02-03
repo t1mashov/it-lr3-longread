@@ -657,10 +657,10 @@
     </style>
 
     <style>
-  .cta--single, .cta--triple { display:none; }
-  .cta-single .cta--single { display:block; }
-  .cta-triple .cta--triple { display:block; }
-</style>
+        .cta {
+            display: none;
+        }
+    </style>
 </head>
 
 
@@ -702,15 +702,17 @@
             <aside class="toc reveal in" aria-label="Содержание">
                 <h2>Содержание</h2>
                 <nav id="toc">
-                    <div class="cta cta--single">
+                    <div id="single">
                         <a href="#intro" onclick="ym(106613205,'reachGoal','click')">1. Состояние на текущий момент</a>
                     </div>
-                    <div class="cta cta--triple">
+                    <div id="triple">
                         <a href="#intro" onclick="ym(106613205,'reachGoal','click')">1. Состояние на текущий момент</a>
-                        <a href="#digital-economy" onclick="ym(106613205,'reachGoal','click')">2. Цифровая экономика как «новая нормальность»</a>
-                        <a href="#industry40" onclick="ym(106613205,'reachGoal','click')">3. Индустрия 4.0 и связка IoT–Cloud–Data</a>
+                        <a href="#digital-economy" onclick="ym(106613205,'reachGoal','click')">2. Цифровая экономика как
+                            «новая нормальность»</a>
+                        <a href="#industry40" onclick="ym(106613205,'reachGoal','click')">3. Индустрия 4.0 и связка
+                            IoT–Cloud–Data</a>
                     </div>
-                   
+
                     <!-- <a href="#web3">4. Web 3.0: принципы и технологический стек</a>
                     <a href="#storage">5. Децентрализованное хранение: IPFS как базовая идея</a>
                     <a href="#tourism">6. Туризм: практические сценарии Web 3.0</a>
@@ -1564,11 +1566,11 @@
             console.log('layout', layout);
 
             if (layout === 'triple') {
-                console.log("trip")
-                document.documentElement.classList.add('cta-triple');
+                console.log("triple")
+                document.getElementById('single').classList = 'cta'
             } else {
-                console.log("vkid")
-                document.documentElement.classList.add('cta-single');
+                console.log("single")
+                document.getElementById('triple').classList = 'cta'
             }
         });
     </script>
