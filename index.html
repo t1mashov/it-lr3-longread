@@ -1563,9 +1563,10 @@
 
             var layout = flags && (flags.cta_layout || flags['cta_layout']);
 
-            console.log('layout', layout);
+            console.log('layout = ', layout);
+            console.log('element = ', layout[0])
 
-            if (layout[0] === 'triple') {
+            if (layout[0] == 'triple') {
                 console.log("triple")
                 document.getElementById('single').classList = 'cta'
             } else {
